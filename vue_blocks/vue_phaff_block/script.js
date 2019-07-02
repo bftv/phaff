@@ -26,11 +26,17 @@ var recordList = Vue.extend({
 			s_atcc_number: null,
 			s_nrrl_number: null,
 			s_other_collection_numbers: null,
+			s_synonym: null,
+			s_geographic_origin: null,
+			s_source_country: null,
+			s_source_name: null,
+			s_date_of_isolation: null,
 			genus_set: null,
 			cart: [],
 			viewMode: "list",
 			filters: {},
-			scrollPosition: 0
+			scrollPosition: 0,
+			moreFields: false
         }
     },
 	
@@ -97,6 +103,21 @@ var recordList = Vue.extend({
 			if(this.s_other_collection_numbers){
 				Object.assign(this.filters, {other_collection_numbers: this.s_other_collection_numbers})
 			}
+			if(this.s_synonym){
+				Object.assign(this.filters, {synonym: this.s_synonym})
+			}
+			if(this.s_geographic_origin){
+				Object.assign(this.filters, {geographic_origin: this.s_geographic_origin})
+			}
+			if(this.s_source_country){
+				Object.assign(this.filters, {source_country: this.s_source_country})
+			}
+			if(this.s_source_name){
+				Object.assign(this.filters, {source_name: this.s_source_name})
+			}
+			if(this.s_date_of_isolation){
+				Object.assign(this.filters, {date_of_isolation: this.s_date_of_isolation})
+			}
 			this.filteredData = this.multiFilter(this.recordsData, this.filters),
 			this.updateVisibleRecords(),
 			this.loading = false
@@ -119,6 +140,11 @@ var recordList = Vue.extend({
 			this.s_atcc_number = null,
 			this.s_nrrl_number = null,
 			this.s_other_collection_numbers = null,
+			this.s_synonym = null,
+			this.s_geographic_origin = null,
+			this.s_source_country = null,
+			this.s_source_name = null,
+			this.s_date_of_isolation = null,
 			this.filters = {},
 			this.filteredData = this.recordsData,
 			this.updateVisibleRecords()
@@ -157,6 +183,12 @@ var recordList = Vue.extend({
 			value = "; " + document.cookie,
 			parts = value.split("; " + name + "=");
 			if (parts.length == 2) return parts.pop().split(";").shift()
+		},
+		showMoreFields: function() {
+			this.moreFields = true
+		},
+		hideMoreFields: function() {
+			this.moreFields = false
 		}
 	},
 })
