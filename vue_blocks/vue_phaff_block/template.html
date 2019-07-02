@@ -28,7 +28,20 @@
 							<div class="column">
 								<label>NRRL#</label><input type="text" name="nrrl_number" v-model="s_nrrl_number" />
 								<label>Other Collection#</label><input type="text" name="other_collection_numbers" v-model="s_other_collection_numbers" />							
-								<label>&nbsp;</label><input type="submit" value="Search" class="button" style="margin-left: 0"><span @click="clearSearch()" class="addtocart">Clear Search</span>
+								<label>&nbsp;</label><div style="float: left"><input type="submit" value="Search" class="button" style="margin-left: 0"></div><div class="smallText"><span v-if="moreFields" @click="hideMoreFields()" class="addtocart">Hide Advanced Search</span><span v-else @click="showMoreFields()" class="addtocart">Show Advanced Search</span><br/><span @click="clearSearch()" class="addtocart">Clear Search</span></div>
+							</div>
+						</div>
+						<div v-if="moreFields" class="row">
+							<div class="column">
+								<label>Synonym</label><input type="text" name="synonym" v-model="s_synonym" />
+								<label>Geographic Origin</label><input type="text" name="geographic_origin" v-model="s_geographic_origin" />
+							</div>
+							<div class="column">
+								<label>Source Country</label><input type="text" name="source_country" v-model="s_source_country" />
+								<label>Source Name</label><input type="text" name="source_name" v-model="s_source_name" />
+							</div>
+							<div class="column">
+								<label>Date of Isolation</label><input type="text" name="date_of_isolation" v-model="s_date_of_isolation" />
 							</div>
 						</div>
 					</form>
@@ -146,5 +159,10 @@ input, select {
 .column {
 	flex: 33%;
 	padding: 10px;
+}
+.smallText {
+	font-size: 14px;
+	float: left;
+	margin-left: 10px;
 }
 </style>
