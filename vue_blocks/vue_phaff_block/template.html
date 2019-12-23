@@ -21,14 +21,27 @@
 								<label>Species</label><input type="text" name="species" v-model="s_species" />
 							</div>
 							<div class="column">
+								<label>Source Habitat Category</label>
+								<select name="source_habitat_category" v-model="s_source_habitat_category">
+									<option v-for="item in habitat_category_set" :value="item">
+										{{item}}
+									</option>								
+								</select>								
 								<label>Source Habitat [<a href="http://phaff.local/sites/default/files/files/page/PYCCHabitats.pdf" target="_blank">PDF</a>]</label><input type="text" name="source_habitat" v-model="s_source_habitat" />
-								<label>CBS#</label><input type="text" name="cbs_number" v-model="s_cbs_number" />
-								<label>ATCC#</label><input type="text" name="atcc_number" v-model="s_atcc_number" />
+								<label>CBS#</label><input type="text" name="cbs_number" v-model="s_cbs_number" />								
 							</div>
 							<div class="column">
+								<label>ATCC#</label><input type="text" name="atcc_number" v-model="s_atcc_number" />
 								<label>NRRL#</label><input type="text" name="nrrl_number" v-model="s_nrrl_number" />
-								<label>Other Collection#</label><input type="text" name="other_collection_numbers" v-model="s_other_collection_numbers" />							
-								<label>&nbsp;</label><div style="float: left"><input type="submit" value="Search" class="button" style="margin-left: 0"></div><div class="smallText"><span v-if="moreFields" @click="hideMoreFields()" class="addtocart">Hide Advanced Search</span><span v-else @click="showMoreFields()" class="addtocart">Show Advanced Search</span><br/><span @click="clearSearch()" class="addtocart">Clear Search</span></div>
+								<label>Other Collection#</label><input type="text" name="other_collection_numbers" v-model="s_other_collection_numbers" />															
+							</div>							
+						</div>
+						<div class="row">
+							<div class="column">
+								<input type="submit" value="Search" class="button" style="margin-left: 0">
+							</div>
+							<div class="column">
+								<div class="smallText"><span v-if="moreFields" @click="hideMoreFields()" class="addtocart">Hide Advanced Search</span><span v-else @click="showMoreFields()" class="addtocart">Show Advanced Search</span> | <span @click="clearSearch()" class="addtocart">Clear Search</span></div>
 							</div>
 						</div>
 						<div v-if="moreFields" class="row">
@@ -106,6 +119,7 @@
 					<tr><td><h4>Synonym</h4></td><td>{{ singleItem.synonym }}</td></tr>
 					<tr><td><h4>Geographic Origin</h4></td><td>{{ singleItem.geographic_origin }}</td></tr>
 					<tr><td><h4>Source Country</h4></td><td>{{ singleItem.source_country }}</td></tr>
+					<tr><td><h4>Source Habitat Category</h4></td><td>{{ singleItem.source_habitat_category }}</td></tr>
 					<tr><td><h4>Source Habitat</h4></td><td>{{ singleItem.source_habitat }}</td></tr>
 					<tr><td><h4>Source Name</h4></td><td>{{ singleItem.source_name }}</td></tr>
 					<tr><td><h4>CBS #</h4></td><td>{{ singleItem.cbs_number }}</td></tr>
@@ -162,7 +176,7 @@ input, select {
 }
 .smallText {
 	font-size: 14px;
-	float: left;
+	text-align: right;
 	margin-left: 10px;
 }
 </style>
