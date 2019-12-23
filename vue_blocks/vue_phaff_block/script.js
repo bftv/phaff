@@ -21,6 +21,7 @@ var recordList = Vue.extend({
 			s_strain_id: null,
 			s_genus: null,
 			s_species: null,
+			s_source_habitat_category: null,
 			s_source_habitat: null,
 			s_cbs_number: null,
 			s_atcc_number: null,
@@ -32,6 +33,7 @@ var recordList = Vue.extend({
 			s_source_name: null,
 			s_date_of_isolation: null,
 			genus_set: null,
+			habitat_category_set: null,
 			cart: [],
 			viewMode: "list",
 			filters: {},
@@ -51,10 +53,11 @@ var recordList = Vue.extend({
 				this.recordsData = response.data,
 				this.filteredData = response.data,
 				this.updateVisibleRecords(),
-				this.genus_set = [...new Set(this.recordsData.map(g => g.genus))],
-				this.genus_set.sort(function (a, b) {
-					return a.toLowerCase().localeCompare(b.toLowerCase())
-				}),						
+				this.genus_set = [...new Set(this.recordsData.map(g => g.genus))].sort(Intl.Collator().compare),
+				//this.genus_set.sort(function (a, b) {
+				//	return a.toLowerCase().localeCompare(b.toLowerCase())
+				//}),
+				this.habitat_category_set = [...new Set(this.recordsData.map(g => g.source_habitat_category))].sort(Intl.Collator().compare),				
 				this.loading = false				
 			})
 		},
@@ -87,6 +90,9 @@ var recordList = Vue.extend({
 			}
 			if(this.s_species){
 				Object.assign(this.filters, {species: this.s_species})
+			}
+			if(this.s_source_habitat_category){
+				Object.assign(this.filters, {source_habitat_category: this.s_source_habitat_category})
 			}
 			if(this.s_source_habitat){
 				Object.assign(this.filters, {source_habitat: this.s_source_habitat})
@@ -135,6 +141,7 @@ var recordList = Vue.extend({
 			this.s_strain_id = null,
 			this.s_genus = null,
 			this.s_species = null,
+			this.s_source_habitat_category = null,
 			this.s_source_habitat = null,
 			this.s_cbs_number = null,
 			this.s_atcc_number = null,
