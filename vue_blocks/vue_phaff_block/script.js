@@ -44,6 +44,7 @@ var recordList = Vue.extend({
 	
 	mounted: function() {
 		//this.pageSize = drupalSettings.pdb.configuration[blockID].recordsPerPage,
+		this.emptyCart(),
 		this.getRecordsList(phaffDbUrl)
 	},
 
