@@ -14,6 +14,7 @@
 								<label>Strain ID</label><input type="text" name="strain_id" v-model="s_strain_id" />
 								<label>Genus</label>
 								<select name="genus" v-model="s_genus">
+									<option value=" "></option>
 									<option v-for="item in genus_set" :value="item">
 										{{item}}
 									</option>								
@@ -23,6 +24,7 @@
 							<div class="column">
 								<label>Source Habitat Category</label>
 								<select name="source_habitat_category" v-model="s_source_habitat_category">
+									<option value=" "></option>
 									<option v-for="item in habitat_category_set" :value="item">
 										{{item}}
 									</option>								
