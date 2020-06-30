@@ -86,14 +86,18 @@ var recordList = Vue.extend({
 			if(this.s_strain_id){				
 				Object.assign(this.filters, {strain_id: this.s_strain_id})
 			}			
-			if(this.s_genus){
+			if(this.s_genus && this.s_genus != " "){
 				Object.assign(this.filters, {genus: this.s_genus})
+			} else if(this.s_genus == " "){
+				this.filters = this.deleteProps(this.filters, 'genus');
 			}
 			if(this.s_species){
 				Object.assign(this.filters, {species: this.s_species})
 			}
-			if(this.s_source_habitat_category){
+			if(this.s_source_habitat_category && this.s_source_habitat_category != ""){
 				Object.assign(this.filters, {source_habitat_category: this.s_source_habitat_category})
+			} else if(this.s_source_habitat_category == " "){
+				this.filters = this.deleteProps(this.filters, 'source_habitat_category');
 			}
 			if(this.s_source_habitat){
 				Object.assign(this.filters, {source_habitat: this.s_source_habitat})
@@ -128,6 +132,15 @@ var recordList = Vue.extend({
 			this.filteredData = this.multiFilter(this.recordsData, this.filters),
 			this.updateVisibleRecords(),
 			this.loading = false
+		},
+		deleteProps: function(obj, props){
+			if (!Array.isArray(props)) props = [props];
+			return Object.keys(obj).reduce((newObj, prop) => {
+				if (!props.includes(prop)) {
+					newObj[prop] = obj[prop];
+				}
+				return newObj;
+			}, {});
 		},
 		multiFilter: function(array, filters){
 			const filterKeys = Object.keys(filters);
