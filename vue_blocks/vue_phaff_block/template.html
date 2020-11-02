@@ -113,7 +113,7 @@
 				<div v-else><p style="text-align: center; color: red;"><strong>You don't have anything in the cart.</strong></p></div>
 			</div>
 			<div v-else-if="viewMode === 'single'">
-				<div class="back-button cart-button"><button class="button" @click="addToCart(singleItem.id - 1)">Add to Cart</button><button class="button" @click="showCart()">View Cart / Checkout</button><button class="button" @click="showList()"><-- Go Back</button></div>
+				<div class="back-button cart-button"><button class="button" @click="addToCartFull(singleItem.id)">Add to Cart</button><button class="button" @click="showCart()">View Cart / Checkout</button><button class="button" @click="showList()"><-- Go Back</button></div>
 				<table>
 					<tr><td style="width: 220px"><h4>Strain ID</h4></td><td>{{ singleItem.strain_id }}</td></tr>					
 					<tr><td><h4>Genus</h4></td><td>{{ singleItem.genus }}</td></tr>
