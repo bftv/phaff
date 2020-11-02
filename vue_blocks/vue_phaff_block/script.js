@@ -38,7 +38,8 @@ var recordList = Vue.extend({
 			viewMode: "list",
 			filters: {},
 			scrollPosition: 0,
-			moreFields: false
+			moreFields: false,
+			tempIndex: ''
         }
     },
 	
@@ -171,7 +172,11 @@ var recordList = Vue.extend({
 			this.updateVisibleRecords()
 		},
 		addToCart: function(id){
-			this.cart.push({StrainID: this.filteredData[id].strain_id, Genus: this.filteredData[id].genus, Species: this.filteredData[id].species})
+			this.cart.push({StrainID: this.visibleRecords[id].strain_id, Genus: this.visibleRecords[id].genus, Species: this.visibleRecords[id].species})
+		},
+		addToCartFull: function(id){
+			id = this.tempIndex,
+			this.cart.push({StrainID: this.visibleRecords[id].strain_id, Genus: this.visibleRecords[id].genus, Species: this.visibleRecords[id].species})
 		},
 		showCart: function(){
 			this.viewMode = "cart"
@@ -190,7 +195,8 @@ var recordList = Vue.extend({
 			this.scrollPosition = document.documentElement.scrollTop,
 			this.viewMode = "single",
 			window.scrollTo(0, 200),
-			this.singleItem = this.filteredData[index]
+			this.singleItem = this.filteredData[index],
+			this.tempIndex = index
 		},
 		checkOut: function(){
 			document.cookie = "phaff="+JSON.stringify(this.cart),
