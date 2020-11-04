@@ -195,7 +195,7 @@ var recordList = Vue.extend({
 			this.scrollPosition = document.documentElement.scrollTop,
 			this.viewMode = "single",
 			window.scrollTo(0, 200),
-			this.singleItem = this.filteredData[index],
+			this.singleItem = this.visibleRecords[index],
 			this.tempIndex = index
 		},
 		checkOut: function(){
