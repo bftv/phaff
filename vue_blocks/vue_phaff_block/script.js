@@ -172,11 +172,11 @@ var recordList = Vue.extend({
 			this.updateVisibleRecords()
 		},
 		addToCart: function(id){
-			this.cart.push({StrainID: this.visibleRecords[id].strain_id, Genus: this.visibleRecords[id].genus, Species: this.visibleRecords[id].species})
+			this.cart.push({this.visibleRecords[id].genus, this.visibleRecords[id].species, 'UCDFST', this.visibleRecords[id].strain_id})
 		},
 		addToCartFull: function(id){
 			id = this.tempIndex,
-			this.cart.push({StrainID: this.visibleRecords[id].strain_id, Genus: this.visibleRecords[id].genus, Species: this.visibleRecords[id].species})
+			this.cart.push({this.visibleRecords[id].genus, this.visibleRecords[id].species, 'UCDFST', this.visibleRecords[id].strain_id})
 		},
 		showCart: function(){
 			this.viewMode = "cart"
