@@ -61,17 +61,23 @@ function sf1subtheme_form_alter(&$form, FormStateInterface $form_state, $form_id
 
     if($form_id == 'webform_submission_checkout_add_form' && $form['#id'] == 'webform-submission-checkout-add-form' && $_GET['checkout'] == 'true'){        
 		$cart = str_replace('"'," ",$_COOKIE['phaff']);
-        $cart = str_replace("[", "", $cart);
+		$cart = str_replace('\n',"",$cart);
+        	$cart = str_replace("[", "", $cart);
 		$i = 1;
 		if(substr_count($cart, "},") >= 1){
 			$i = $i+ substr_count($cart, "},");
 		}
 		$cart = str_replace("},", "\n", $cart);
-        $cart = str_replace(" :", ":", $cart);
-        $cart = str_replace("{ ", "", $cart);
-        $cart = str_replace(" }", "", $cart);
-        $cart = str_replace("]", "", $cart);
-        $cart = str_replace(" ,", ",", $cart);    
+        	$cart = str_replace(" :", ":", $cart);
+       		$cart = str_replace("{ ", "", $cart);
+        	$cart = str_replace(" }", "", $cart);
+        	$cart = str_replace("]", "", $cart);
+        	$cart = str_replace(" ,", ",", $cart);
+		$cart = str_replace(",", "", $cart);
+		$cart = str_replace("Genus: ", "", $cart);
+		$cart = str_replace("Species: ", "", $cart);
+		$cart = str_replace("Dep: ", "", $cart);
+		$cart = str_replace("StrainID: ", "", $cart);   
 		
         $form['elements']['your_order']['cart_items']['#default_value'] = $cart;
 		$form['elements']['item_numbers']['#value'] = $i;
