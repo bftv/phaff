@@ -59,7 +59,7 @@ function sf1subtheme_theme_suggestions_node_alter(array &$suggestions, array $va
 
 function sf1subtheme_form_alter(&$form, FormStateInterface $form_state, $form_id){
 
-    if($form_id == 'webform_submission_checkout_add_form' && $form['#id'] == 'webform-submission-checkout-add-form' && $_GET['checkout'] == 'true'){        
+   /*  if($form_id == 'webform_submission_checkout_add_form' && $form['#id'] == 'webform-submission-checkout-add-form' && $_GET['checkout'] == 'true'){        
 		$cart = str_replace('"'," ",$_COOKIE['phaff']);
 		$cart = str_replace('\n',"",$cart);
         	$cart = str_replace("[", "", $cart);
@@ -85,5 +85,5 @@ function sf1subtheme_form_alter(&$form, FormStateInterface $form_state, $form_id
 	else{
 		$form['elements']['your_order']['cart_items']['#default_value'] = "You have not selected any items to purchase!!!";
 		$form['elements']['actions']['#access'] = false;
-	}
+	} */
 }
