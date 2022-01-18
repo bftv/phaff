@@ -200,7 +200,17 @@ var recordList = Vue.extend({
 		},
 		checkOut: function(){
 			document.cookie = "phaff="+JSON.stringify(this.cart),
-			window.location.href = '/form/checkout?checkout=true'
+			items = JSON.stringify(this.cart),
+			items = items.split("},").join("%0A"),
+			items = items.split("}").join("%0A"),
+			items = items.split("{").join(""),
+			items = items.split("[").join(""),
+			items = items.split("]").join(""),
+			items = items.split("\"").join(""),
+			items = items.split(":").join(": "),
+			items = items.split(",").join(", "),
+			items = items.split("\\n").join(""),
+			window.location.href = '/form/checkout?cart_items='+items
 		},
 		emptyCart: function(){
 			this.cart = [],
