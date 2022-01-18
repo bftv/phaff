@@ -210,7 +210,7 @@ var recordList = Vue.extend({
 			items = items.split(":").join(": "),
 			items = items.split(",").join(", "),
 			items = items.split("\\n").join(""),
-			window.location.href = '/form/checkout?cart_items=justtesting'
+			window.location.href = '/form/checkout?cart_items='+items
 		},
 		emptyCart: function(){
 			this.cart = [],
