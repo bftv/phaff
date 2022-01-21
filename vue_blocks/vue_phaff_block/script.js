@@ -210,7 +210,9 @@ var recordList = Vue.extend({
 			items = items.split(":").join(": "),
 			items = items.split(",").join(", "),
 			items = items.split("\\n").join(""),
-			window.location.href = '/form/checkout?cart_items='+items
+			//localStorage.setItem('selectedItems', items),
+			//console.log(localStorage.getItem('selectedItems'))
+			window.location.href = '/form/checkout?checkout=true&items='+btoa(items)
 		},
 		emptyCart: function(){
 			this.cart = [],
