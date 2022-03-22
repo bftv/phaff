@@ -68,7 +68,7 @@ function sf1subtheme_form_alter(&$form, FormStateInterface $form_state, $form_id
 			$i = substr_count($cart, "%0A");
 		}
 		$cart = str_replace("Genus: ", "", $cart);
-		$cart = str_replace("Species:  ", "", $cart);
+		$cart = str_replace("Species: ", "", $cart);
 		$cart = str_replace("Dep: ", "", $cart);
 		$cart = str_replace("StrainID: ", "", $cart);
 		$cart = str_replace(", ", " ", $cart);
