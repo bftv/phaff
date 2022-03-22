@@ -60,14 +60,14 @@ function sf1subtheme_theme_suggestions_node_alter(array &$suggestions, array $va
 function sf1subtheme_form_alter(&$form, FormStateInterface $form_state, $form_id){
 
     if($form_id == 'webform_submission_checkout_add_form' && $form['#id'] == 'webform-submission-checkout-add-form' && $_GET['checkout'] == 'true'){        
-		/* $cart = str_replace('"'," ",$_COOKIE['phaff']);
-		$cart = str_replace('\n',"",$cart);
-        	$cart = str_replace("[", "", $cart);
+		$cart = base64_decode($_GET['items']);
+		//$cart = str_replace('\n',"",$cart);
+        //$cart = str_replace("[", "", $cart);
 		$i = 1;
-		if(substr_count($cart, "},") >= 1){
-			$i = $i+ substr_count($cart, "},");
+		if(substr_count($cart, "%0A") >= 1){
+			$i = $i+ substr_count($cart, "%0A");
 		}
-		$cart = str_replace("},", "\n", $cart);
+		/*$cart = str_replace("},", "\n", $cart);
         	$cart = str_replace(" :", ":", $cart);
        		$cart = str_replace("{ ", "", $cart);
         	$cart = str_replace(" }", "", $cart);
@@ -79,8 +79,8 @@ function sf1subtheme_form_alter(&$form, FormStateInterface $form_state, $form_id
 		$cart = str_replace("Dep: ", "", $cart);
 		$cart = str_replace("StrainID: ", "", $cart);    */
 		
-        $form['elements']['your_order']['cart_items']['#default_value'] =  str_replace('%0A', "\n", base64_decode($_GET['items']));//$cart;
-		//$form['elements']['item_numbers']['#value'] = $i;
+        $form['elements']['your_order']['cart_items']['#default_value'] =  str_replace('%0A', "\n", $cart);//$cart;
+		$form['elements']['item_numbers']['#value'] = $i;
     }
 	else{
 		$form['elements']['your_order']['cart_items']['#default_value'] =  "You have not selected any items to purchase!!!";
