@@ -4,6 +4,6 @@ parameters:
     allowedHeaders: ['x-csrf-token', 'authorization', 'contenttype', 'accept', 'origin', 'x-requested-with']
     allowedMethods: ['GET']
     allowedOrigins: ['*']
-    exposedHeaders: true
+    exposedHeaders: ['*']
     maxAge: false
     supportsCredentials: false
