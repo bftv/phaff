@@ -1,0 +1,19 @@
+name: Phaff Collection DB Block
+machine_name: vue-phaff-block
+type: pdb
+description: 'Shows records from the Phaff Collection Database from web.bftv.ucdavis.edu'
+package: Vue
+core: '8.x'
+module_status: active
+presentation: vue
+template: template.html
+add_css:
+    header:
+        component:
+            'https://use.fontawesome.com/releases/v5.7.2/css/all.css': { minified: true, type: external, attributes: { integrity: sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr, crossorigin: anonymous }}            
+add_js:
+  footer:
+        'https://unpkg.com/axios/dist/axios.min.js': {type: external} 
+        'https://unpkg.com/vue-router@4/dist/vue-router.global.prod.js': { type: external }
+        #'vue-router.js': {}
+        'script.js': {}
